@@ -1,0 +1,35 @@
+{{ blok._editable }}
+<div class="teaser">
+  <div class="container container--small">
+    <h3>
+      {{ blok.intro_headline }}
+    </h3>
+    <h1>
+      {{ blok.headline }}
+    </h1>
+    <h2>
+      {{ blok.sub_headline }}
+    </h2>
+  </div>
+  <div class="teaser__signup">
+    <form class="form js-form" data-token="{{ public_token }}">
+      <input type="hidden" value="{{ 'af@storyblok.com' | encrypt }}" name="to">
+
+      <label for="message_email">
+        Email
+        <input id="message_email" placeholder="Insert your Email" class="form__input" type="email" name="message[email]" />
+      </label>
+      <button class="btn" type="submit">
+        Get an invite
+      </button>
+      <input type="hidden" name="message[body]" value="getspeed100" />
+      <div class="form__hide">
+        <label for="message_comment">Comment</label>
+        <input id="message_comment" type="text" name="message[comment]" />
+      </div>
+    </form>
+    <div>
+      <a class="teaser__cta" rel="noopener" target="_blank" href="https://developers.google.com/speed/pagespeed/insights/">Test the speed of your website now</a>
+    </div>
+  </div>
+</div>

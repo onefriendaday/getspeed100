@@ -1,0 +1,16 @@
+.header {
+  padding: 30px 20px;
+}
+
+.header__logo {
+  text-align: center;
+
+  svg {
+    vertical-align: middle;
+    font-size: 32rem;
+
+    @media (max-width: 600px) {
+      font-size: 16rem;
+    }
+  }
+}

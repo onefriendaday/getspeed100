@@ -1,0 +1,18 @@
+.teaser {
+  text-align: center;
+  color: #FFF;
+}
+
+.teaser__signup {
+  min-height: 500px;
+  background: url('https://a.storyblok.com/t/40443/assets/images/grafic.png') 50% 0 no-repeat;
+  background-size: 900px 524px;
+
+  @media (max-width: 600px) {
+    background-size: 700px 408px
+  }
+}
+
+.teaser__cta {
+  font-size: rem(20px);
+}

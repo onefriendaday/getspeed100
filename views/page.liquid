@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ story.name }}</title>
+
+  {% if proxy_mode %}
+    <link href="{{ 'assets/css/above.css' | asset_url }}" rel="stylesheet">
+  {% else %}
+    <style>{%- include 'above_fold_css' -%}</style>
+  {% endif %}
+
+  <link rel="icon" type="image/png" href="{{ '//a.storyblok.com/f/40201/c55e612713/500x500_front_blue_transparent.png' | resize: '32x32' }}" sizes="32x32">
+  <link rel="icon" type="image/png" href="{{ '//a.storyblok.com/f/40201/c55e612713/500x500_front_blue_transparent.png' | resize: '192x192' }}" sizes="192x192">
+  <link rel="icon" type="image/png" href="{{ '//a.storyblok.com/f/40201/c55e612713/500x500_front_blue_transparent.png' | resize: '96x96' }}" sizes="96x96">
+  <link rel="icon" type="image/png" href="{{ '//a.storyblok.com/f/40201/c55e612713/500x500_front_blue_transparent.png' | resize: '16x16' }}" sizes="16x16">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="mask-icon" href="//app.storyblok.com/images/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="apple-mobile-web-app-title" content="Getspeed100">
+  <meta name="application-name" content="Getspeed100">
+  <meta name="theme-color" content="#ffffff">
+
+  <link rel="preload" id="stylesheet" href="{{ 'assets/css/below.css' | asset_url }}" as="style" onload="this.rel='stylesheet'">
+</head>
+<body>
+  {% spaceless %}
+
+  {% include 'icon' %}
+
+  <div class="bg">
+    <a class="u__vis-hidden" href="#main">Skip to main content</a>
+
+    <header class="header">
+      <div class="container">
+        <div class="header__logo">
+          <svg class="icon icon__logo"><use xlink:href="#icon-logo"></use></svg>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" role="main">
+      {% include story.content.component with blok: story.content, title: story.name, date: story.created_at %}
+    </main>
+
+    <footer>
+      <!-- Footer -->
+    </footer>
+  </div>
+
+  {% endspaceless %}
+
+  <script type="text/javascript" src="//app.storyblok.com/f/storyblok-latest.js"></script>
+  <script type="text/javascript" src="{{ 'assets/js/scripts.js' | asset_url }}"></script>
+  {% if story.content._editable %}
+    <script type="text/javascript">
+
+      storyblok.init({
+        accessToken: '{{ public_token }}'
+      });
+
+      storyblok.on('change', function() {
+        location.reload(true);
+      });
+
+      storyblok.pingEditor(function() {
+        if (storyblok.inEditor) {
+          storyblok.enterEditmode();
+        }
+      });
+
+    </script>
+  {% endif %}
+  <script src="{{ 'assets/js/up.js' | asset_url }}"></script>
+  <script>
+    UpUp.debug(true);
+    UpUp.start({
+      'content': '<html><body><h1>You are offline now.</h1><p>Checkout Getspeed100.com as soon you have internet connection again.</p></body></html>',
+      'service-worker-url': '/service-worker.js'
+    });
+  </script>
+</body>
+</html>
