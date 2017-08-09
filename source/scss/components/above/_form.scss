@@ -8,18 +8,33 @@
   }
 }
 
+.form__actions {
+  margin-top: 20px;
+}
+
 .form__input {
-  border-radius: 23px;
-  border: none;
+  border-radius: 5px;
+  border: 1px solid #000;
   line-height: 26px;
   padding: 10px 16px;
-  width: 200px;
+  width: 100%;
+  box-sizing: border-box;
   font-size: rem(16px);
-  margin: 0 5px;
 
   @media (max-width: 600px) {
     width: 140px;
   }
+}
+
+.form__input--m {
+  width: 200px;
+  margin: 0 5px;
+}
+
+.form__label {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .form__hide {
